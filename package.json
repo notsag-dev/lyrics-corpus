@@ -13,6 +13,7 @@
     "cheerio": "^1.0.0-rc.3"
   },
   "bin": {
-    "create-corpus": "./bin/createCorpus.js"
+    "create-corpus": "./bin/createCorpus.js",
+    "lyrics": "./bin/lyrics.js"
   }
 }

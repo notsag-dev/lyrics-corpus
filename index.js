@@ -8,6 +8,10 @@ const parseQueryResponse = data => {
   return JSON.parse(data.substring(10, data.length - 2));
 };
 
+/**
+ * Shuffle array (edits input :s)
+ *
+ */
 const shuffleArray = array => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -58,8 +62,8 @@ const getArtistSongsInfo = async (artist, maxSongs = 10) => {
  * Get location information for a song (in case it is found).
  *
  */
-const getSongInformation = async (artist, songName) => {
-  const {response: res} = query(`${songName} ${artist}`);
+const getSongInformation = async (q) => {
+  const {response: res} = await query(q);
   if (res.numFound >= 1) {
     const {url, dns} = res.docs[0];
     return {url, dns, found: true};
@@ -94,8 +98,8 @@ const getLyricsFromSongInfo = async url => {
  * Get lyrics from song and artist name.
  *
  */
-const getLyricsFromName = async (songName, artist = '') => {
-  const song = await getSongInformation(artist, songName);
+const getLyricsFromName = async (q) => {
+  const song = await getSongInformation(q);
   if (!song.found) {
     return;
   }

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const lyrics = require('../.');
+const lyrics = require('../');
 
 const createCorpus = async (args) => {
   if (!args.length) {
