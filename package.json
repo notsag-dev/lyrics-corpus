@@ -1,7 +1,7 @@
 {
   "name": "lyrics-corpus",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "[bulk] fetch lyrics from the console",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,5 +15,9 @@
   "bin": {
     "create-corpus": "./bin/createCorpus.js",
     "lyrics": "./bin/lyrics.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/notsag-dev/lyrics-corpus.git"
   }
 }
