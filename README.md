@@ -6,7 +6,7 @@ Fetch lyrics from the console.
 npm install lyrics-corpus -g
 ```
 
-## Bulk generate lyrics files
+## Create corpus of lyrics files
 Fetch 10 songs by The Beatles by running the following:
 ```
 create-corpus "The beatles" 10
