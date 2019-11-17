@@ -7,9 +7,9 @@ npm install lyrics-corpus -g
 ```
 
 ## Bulk generate lyrics files
-Fetch 20 songs by The Beatles by running the following:
+Fetch 10 songs by The Beatles by running the following:
 ```
-create-corpus "The beatles" 20
+create-corpus "The beatles" 10
 ```
 
 ![create corpus gif](https://media.giphy.com/media/dAEDt6yeoD911BL1S6/giphy.gif)
@@ -18,3 +18,4 @@ create-corpus "The beatles" 20
 ```
 lyrics carlos gardel volver
 ```
+![lyrics gif](https://media.giphy.com/media/MC4BsByrvH5FpSFEQZ/giphy.gif)
