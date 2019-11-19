@@ -108,7 +108,7 @@ const getLyricsFromName = async (q) => {
 };
 
 /**
- * Generate lyrics files for an artists.
+ * Generate lyrics files for an artist.
  *
  */
 const generateLyricsCorpus = async (
@@ -116,25 +116,30 @@ const generateLyricsCorpus = async (
   dataPath = './',
   maxSongs = 10,
   debug = false,
+  toFile = true,
 ) => {
   const fileRegExp = /[!@#$%^&*/\(),.?":{}|<>]/g;
   const artistFolderName = artistName.replace(fileRegExp, '');
   const dir = path.join(dataPath, artistFolderName);
-  if (!fs.existsSync(dir)) {
+  if (toFile && !fs.existsSync(dir)) {
     fs.mkdirSync(dir);
   }
   const songs = await getArtistSongsInfo(artistName, maxSongs);
+  const corpus = [];
   for (let i = 0; i < songs.length; i++) {
     const lyrics = await getLyricsFromSongInfo(songs[i].url);
-    const fileName =
-      songs[i].name.replace(fileRegExp, '').toLowerCase() + '.txt';
-    const filePath = path.join(dir, fileName);
-    fs.writeFileSync(filePath, lyrics);
+    corpus.push(lyrics);
+    if (toFile) {
+      const fileName =
+        songs[i].name.replace(fileRegExp, '').toLowerCase() + '.txt';
+      const filePath = path.join(dir, fileName);
+      fs.writeFileSync(filePath, lyrics);
+    }
     if (debug) {
       console.log(`${i + 1}/${songs.length} ${songs[i].name}`);
     }
   }
-  return songs;
+  return corpus;
 };
 
 module.exports = {
