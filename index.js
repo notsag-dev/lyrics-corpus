@@ -43,7 +43,10 @@ const getArtistSongsInfo = async (artist, maxSongs = 10) => {
   if (!res.docs.length) {
     return [];
   }
-  const doc = res.docs[0];
+  const doc = res.docs.find(doc => doc.art);
+  if (!doc) {
+    return [];
+  }
   const {data} = await axios.request({
     url: `${config.lyricsUrl}${doc.dns}`,
     method: 'get',
