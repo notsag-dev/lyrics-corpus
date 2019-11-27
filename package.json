@@ -1,6 +1,6 @@
 {
   "name": "lyrics-corpus",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "[bulk] fetch lyrics from the console",
   "main": "index.js",
   "scripts": {

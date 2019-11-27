@@ -52,20 +52,19 @@ const getArtistSongsInfo = async (artist, maxSongs = 10) => {
     method: 'get',
   });
   const $ = cheerio.load(data);
-  let songs = $('ul.cnt-list a').toArray();
+  let songs = $('ul.cnt-list-songs a').toArray();
   shuffleArray(songs);
-  return songs.slice(0, maxSongs)
-    .map(a => ({
-      name: a.children[0].data,
-      url: `${config.lyricsUrl}${a.attribs['href']}`,
-    }));
+  return songs.slice(0, maxSongs).map(a => ({
+    name: a.children[0].children[0].data,
+    url: `${config.lyricsUrl}${a.attribs['href']}`,
+  }));
 };
 
 /**
  * Get location information for a song (in case it is found).
  *
  */
-const getSongInformation = async (q) => {
+const getSongInformation = async q => {
   const {response: res} = await query(q);
   if (res.numFound >= 1) {
     const {url, dns} = res.docs[0];
@@ -101,7 +100,7 @@ const getLyricsFromSongInfo = async url => {
  * Get lyrics from song and artist name.
  *
  */
-const getLyricsFromName = async (q) => {
+const getLyricsFromName = async q => {
   const song = await getSongInformation(q);
   if (!song.found) {
     return;
