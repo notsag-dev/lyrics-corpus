@@ -16,7 +16,7 @@ create-corpus "The beatles" 10
 
 ## Print lyrics to console
 ```
-lyrics carlos gardel volver
+lyrics volver carlos gardel
 ```
 ![lyrics gif](https://media.giphy.com/media/MC4BsByrvH5FpSFEQZ/giphy.gif)
 
